@@ -1,8 +1,6 @@
 namespace Dzeta.Configuration;
 
 /// <summary>
-/// Base configuration class that all configuration classes should inherit from
+///     Base configuration class that all configuration classes should inherit from
 /// </summary>
-public abstract class BaseConfiguration
-{
-} 
+public abstract class BaseConfiguration;

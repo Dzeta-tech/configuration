@@ -1,23 +1,24 @@
 # 🛠️ Dzeta.Configuration
 
-A simple, flexible, and readable .NET configuration library with pluggable providers for environment variables, JSON, and more.
+A simple, flexible, and readable .NET configuration library with pluggable providers for environment variables, JSON,
+and more.
 
 ## 📋 Table of Contents
 
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)
 - [🚀 Quick Start](#-quick-start)
-  - [1. Define Configuration Classes](#1-define-configuration-classes)
-  - [2. Set Environment Variables](#2-set-environment-variables)
-  - [3. Register with Dependency Injection](#3-register-with-dependency-injection)
-  - [4. Use in Your Application](#4-use-in-your-application)
+    - [1. Define Configuration Classes](#1-define-configuration-classes)
+    - [2. Set Environment Variables](#2-set-environment-variables)
+    - [3. Register with Dependency Injection](#3-register-with-dependency-injection)
+    - [4. Use in Your Application](#4-use-in-your-application)
 - [🏗️ Advanced Usage](#️-advanced-usage)
-  - [Direct Usage](#direct-usage)
-  - [Custom Providers](#custom-providers)
+    - [Direct Usage](#direct-usage)
+    - [Custom Providers](#custom-providers)
 - [🔧 Configuration Classes](#-configuration-classes)
-  - [Simple Properties](#simple-properties)
-  - [Nested Configurations](#nested-configurations)
-  - [Built-in Database Configuration](#built-in-database-configuration)
+    - [Simple Properties](#simple-properties)
+    - [Nested Configurations](#nested-configurations)
+    - [Built-in Database Configuration](#built-in-database-configuration)
 - [📝 Environment Variable Naming](#-environment-variable-naming)
 - [✅ Validation](#-validation)
 - [🔗 Supported Types](#-supported-types)
@@ -254,17 +255,18 @@ public class EmailConfiguration : BaseConfiguration
 
 Environment variables are automatically mapped from nested property paths:
 
-| Configuration Path | Environment Variable | Example Value |
-|-------------------|---------------------|---------------|
-| `ApiKey` | `MYAPP_APIKEY` | `secret123` |
-| `Server.Host` | `MYAPP_SERVER_HOST` | `localhost` |
-| `Server.Port` | `MYAPP_SERVER_PORT` | `8080` |
-| `Database.Host` | `MYAPP_DATABASE_HOST` | `db.example.com` |
-| `Database.Port` | `MYAPP_DATABASE_PORT` | `5432` |
-| `Logging.Level` | `MYAPP_LOGGING_LEVEL` | `Debug` |
-| `Cache.MaxSize` | `MYAPP_CACHE_MAXSIZE` | `2000` |
+| Configuration Path | Environment Variable  | Example Value    |
+|--------------------|-----------------------|------------------|
+| `ApiKey`           | `MYAPP_APIKEY`        | `secret123`      |
+| `Server.Host`      | `MYAPP_SERVER_HOST`   | `localhost`      |
+| `Server.Port`      | `MYAPP_SERVER_PORT`   | `8080`           |
+| `Database.Host`    | `MYAPP_DATABASE_HOST` | `db.example.com` |
+| `Database.Port`    | `MYAPP_DATABASE_PORT` | `5432`           |
+| `Logging.Level`    | `MYAPP_LOGGING_LEVEL` | `Debug`          |
+| `Cache.MaxSize`    | `MYAPP_CACHE_MAXSIZE` | `2000`           |
 
 **Naming Rules:**
+
 - Property names are converted to UPPERCASE
 - Nested objects use underscore (`_`) as separator
 - Prefix is added at the beginning if specified
@@ -349,6 +351,7 @@ The library follows a clean, modular architecture:
 ```
 
 **Components:**
+
 - **`IConfigurationValueProvider`**: Interface for value sources
 - **`EnvironmentValueProvider`**: Reads from environment variables
 - **`ConfigurationPopulator`**: Fills objects from providers

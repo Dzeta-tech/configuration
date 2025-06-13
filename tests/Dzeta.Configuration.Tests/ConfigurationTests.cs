@@ -1,30 +1,24 @@
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Configuration;
-using Xunit;
 
 namespace Dzeta.Configuration.Tests;
 
 public class TestConfiguration : BaseConfiguration
 {
-    [Required]
-    public string ApiKey { get; set; } = string.Empty;
+    [Required] public string ApiKey { get; set; } = string.Empty;
 
-    [DefaultValue(8080)]
-    public int Port { get; set; }
+    [DefaultValue(8080)] public int Port { get; set; }
 
     public DatabaseConnectionConfiguration Database { get; set; } = new();
 
     public bool Debug { get; set; }
-
-
 }
 
 public class ConfigurationTests
 {
     [Fact]
-    public void Load_WithEnvironmentVariables_ShouldPopulateConfiguration() 
+    public void Load_WithEnvironmentVariables_ShouldPopulateConfiguration()
     {
         // Arrange
         Environment.SetEnvironmentVariable("TEST_APIKEY", "secret123");
@@ -36,15 +30,15 @@ public class ConfigurationTests
         Environment.SetEnvironmentVariable("TEST_DATABASE_PASSWORD", "pass");
         Environment.SetEnvironmentVariable("TEST_DATABASE_DATABASE", "testdb");
 
-        var configuration = new ConfigurationBuilder()
+        IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
 
-        var valueProvider = new EnvironmentValueProvider(configuration, "TEST");
-        var populator = new ConfigurationPopulator(valueProvider);
+        EnvironmentValueProvider valueProvider = new(configuration, "TEST");
+        ConfigurationPopulator populator = new(valueProvider);
 
         // Act
-        var config = new TestConfiguration();
+        TestConfiguration config = new();
         populator.Populate(config);
 
         // Assert  
@@ -72,15 +66,15 @@ public class ConfigurationTests
     public void Load_WithMissingRequiredField_ShouldThrowException()
     {
         // Arrange
-        var configuration = new ConfigurationBuilder()
+        IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
 
-        var valueProvider = new EnvironmentValueProvider(configuration, "TEST");
-        var populator = new ConfigurationPopulator(valueProvider);
+        EnvironmentValueProvider valueProvider = new(configuration, "TEST");
+        ConfigurationPopulator populator = new(valueProvider);
 
         // Act & Assert
-        var config = new TestConfiguration();
+        TestConfiguration config = new();
         populator.Populate(config);
         Assert.Throws<ConfigurationValidationException>(() => populator.Validate(config));
     }
@@ -95,15 +89,15 @@ public class ConfigurationTests
         Environment.SetEnvironmentVariable("TEST_DATABASE_PASSWORD", "pass");
         Environment.SetEnvironmentVariable("TEST_DATABASE_DATABASE", "testdb");
 
-        var configuration = new ConfigurationBuilder()
+        IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
 
-        var valueProvider = new EnvironmentValueProvider(configuration, "TEST");
-        var populator = new ConfigurationPopulator(valueProvider);
+        EnvironmentValueProvider valueProvider = new(configuration, "TEST");
+        ConfigurationPopulator populator = new(valueProvider);
 
         // Act
-        var config = new TestConfiguration();
+        TestConfiguration config = new();
         populator.Populate(config);
 
         // Assert
@@ -117,4 +111,4 @@ public class ConfigurationTests
         Environment.SetEnvironmentVariable("TEST_DATABASE_PASSWORD", null);
         Environment.SetEnvironmentVariable("TEST_DATABASE_DATABASE", null);
     }
-} 
+}
