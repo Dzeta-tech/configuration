@@ -1,6 +1,6 @@
 # 🛠️ Dzeta.Configuration
 
-A simple, flexible, and readable .NET configuration library that automatically loads configuration classes from environment variables.
+A simple, flexible, and readable .NET configuration library with pluggable providers for environment variables, JSON, and more.
 
 ## 📋 Table of Contents
 
