@@ -260,11 +260,11 @@ public class EmailConfiguration : BaseConfiguration
 
 ## 📝 Environment Variable Naming
 
-Environment variables are automatically mapped from nested property paths:
+Environment variables are automatically mapped from nested property paths (camelCase to snake_case):
 
 | Configuration Path | Environment Variable  | Example Value    |
 |--------------------|-----------------------|------------------|
-| `ApiKey`           | `MYAPP_APIKEY`        | `secret123`      |
+| `ApiKey`           | `MYAPP_API_KEY`        | `secret123`      |
 | `Server.Host`      | `MYAPP_SERVER_HOST`   | `localhost`      |
 | `Server.Port`      | `MYAPP_SERVER_PORT`   | `8080`           |
 | `Database.Host`    | `MYAPP_DATABASE_HOST` | `db.example.com` |
@@ -334,27 +334,27 @@ public class ExampleConfiguration : BaseConfiguration
 The library follows a clean, modular architecture:
 
 ```
-┌─────────────────────────┐
-│   ServiceCollection     │
-│      Extensions         │
-└──────────┬──────────────┘
-           │
-           ▼
-┌─────────────────────────┐
-│ IConfigurationValue     │
-│      Provider           │
-└──────────┬──────────────┘
-           │
-           ▼
+ ┌───────────────────────┐
+ │   ServiceCollection   │
+ │      Extensions       │
+ └──────────┬────────────┘
+            │
+            ▼
+ ┌───────────────────────┐
+ │ IConfigurationValue   │
+ │      Provider         │
+ └──────────┬────────────┘
+            │
+            ▼
 ┌─────────────────────────┐
 │  ConfigurationPopulator │
-└──────────┬──────────────┘
-           │
-           ▼
-┌─────────────────────────┐
-│   BaseConfiguration     │
-│       Classes           │
-└─────────────────────────┘
+└───────────┬─────────────┘
+            │
+            ▼
+ ┌───────────────────────┐
+ │   BaseConfiguration   │
+ │       Classes         │
+ └───────────────────────┘
 ```
 
 **Components:**

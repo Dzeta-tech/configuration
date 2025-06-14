@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using System.Text.RegularExpressions;
 
 namespace Dzeta.Configuration;
 
@@ -15,8 +16,15 @@ public class EnvironmentValueProvider(IConfiguration configuration, string prefi
 
     string ConvertToEnvironmentKey(string path)
     {
-        // Convert "Database.Host" -> "DATABASE_HOST"
-        string envPath = path.Replace('.', '_').ToUpperInvariant();
+        // Convert camelCase to snake_case: "WalletAddress" -> "WALLET_ADDRESS"
+        // Convert nested paths: "Database.Host" -> "DATABASE_HOST"
+        string envPath = path.Replace('.', '_');
+        
+        // Insert underscore before uppercase letters (except the first one)
+        envPath = Regex.Replace(envPath, "(?<!^)(?<!_)([A-Z])", "_$1");
+        
+        // Convert to uppercase
+        envPath = envPath.ToUpperInvariant();
 
         return string.IsNullOrEmpty(prefix)
             ? envPath
