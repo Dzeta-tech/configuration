@@ -1,5 +1,12 @@
 # 🛠️ Dzeta.Configuration
 
+[![NuGet Version](https://img.shields.io/nuget/v/Dzeta.Configuration?style=flat-square&logo=nuget&logoColor=white&label=NuGet)](https://www.nuget.org/packages/Dzeta.Configuration/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Dzeta.Configuration?style=flat-square&logo=nuget&logoColor=white&label=Downloads)](https://www.nuget.org/packages/Dzeta.Configuration/)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Dzeta-tech/configuration/ci.yml?branch=master&style=flat-square&logo=github&logoColor=white&label=Build)](https://github.com/Dzeta-tech/configuration/actions)
+[![.NET Version](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net&logoColor=white)](https://dotnet.microsoft.com/)
+[![License](https://img.shields.io/github/license/Dzeta-tech/configuration?style=flat-square&logo=github&logoColor=white&label=License)](https://github.com/Dzeta-tech/configuration/blob/master/LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/Dzeta-tech/configuration?style=flat-square&logo=github&logoColor=white&label=Stars)](https://github.com/Dzeta-tech/configuration)
+
 A simple, flexible, and readable .NET configuration library with pluggable providers for environment variables, JSON,
 and more.
 
